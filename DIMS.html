@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!-- saved from url=(0076)https://drivers_info.davaocity.gov.ph/views/inquiry/inquiry.php?id=201800708 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>DIMS</title>
+
+    <link rel="icon" type="image/ico" href="https://drivers_info.davaocity.gov.ph/assets/images/favicon.ico">
+
+    <link rel="stylesheet" href="./DIMS_files/bootstrap.css">
+    <link rel="stylesheet" href="./DIMS_files/style2.css">
+    <link rel="stylesheet" href="./DIMS_files/toastr.css">
+    <link rel="stylesheet" href="./DIMS_files/jquery-ui.min.css">
+    <script src="./DIMS_files/jquery-2.2.3.min.js.download"></script>
+    <script src="./DIMS_files/bootstrap.min.js.download">
+    <script src="../../bootstrap/js/bootstrap.js"/>
+    <script src="../../bootstrap/js/moment.min.js"/>
+    <script src="../../assets/scripts/toastr.js"></script>
+    <script src="./DIMS_files/toastr.min.js.download"></script>
+    <script src="./DIMS_files/jquery-ui.min.js.download"></script>
+
+</head><body>
+
+<form id="form1" method="POST">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">            
+            <div class="navbar-header">              
+              <div id="logo-img"><a href="https://drivers_info.davaocity.gov.ph/views/inquiry/inquiry.php?id=201800708#"><img class="img-responsive navbar-logo" src="./DIMS_files/DIMS-brand.png"></a></div>          
+            </div>
+        </div>
+    </nav>
+    <div id="mainDisplay" class="main-body">
+
+    <div style="margin-top: 5%;">
+        <center>
+         <br>
+            <img style="width:160px; height:160px; margin: auto;" class="img-responsive img-inquiry" src="./DIMS_files/201800708_18592.jpg">
+        </center>
+    </div>
+          <div class="inquiry-info" style="margin: 0 auto;">
+                <center>
+                     <div class="sub-info">
+                        <label class="subtitle">PUV DRIVER'S INFORMATION</label>
+                        <br> <br>
+                        <label> Driver's ID: </label>
+                        <label class="label-feedback"> 201800708</label> 
+                        <br>
+                        <label> CTTMO ID: </label>
+                        <label class="label-feedback"> 18592</label> 
+                        <br>
+                        <label> Name: </label>
+                        <label class="label-feedback"> COLABA, EUGENE M.</label> 
+                        <br>                      
+                        <label> Valid Until: </label>
+                        <label class="label-feedback"> 02/08/2025</label> 
+                        <br>
+                    </div>
+
+                    <div class="clearfix"></div><br>
+                    <div style="width: 50%;">
+                        <div class="row mt-2">
+                            <div> 
+                                <label class="label-form">Contact Number</label>
+                                <input class="form-input" id="contactNumber" placeholder="Please Enter Contact Number" required="" maxlength="12">
+                            </div>      
+                        </div>
+                         <div class="row mt-2">
+                                <label class="label-form">Leave Message</label>
+                                <textarea id="txtMsg" class="form-input" type="text" placeholder="Leave your message here" maxlength="250"></textarea>
+                         </div>
+                    </div>
+
+                   <div style="margin-bottom: 50px;">
+                     <button type="button" class="btn btn-primary btnSave" id="btnSave">Post</button>
+                    <input type="hidden" class="form-control" name="txtDriver" id="txtDriver" value="201800708">
+                    <input type="hidden" class="form-control" name="txtDate" id="txtDate" value="2024/04/25 18:49:03">
+                </div>
+                </center>
+                   
+            </div>
+      </div>
+
+</form>
+                      
+
+        
+
+   <footer>
+            <div class="navbar navbar-fixed-bottom" role="navigation">
+                <div class="navbar-footer-text">                 
+                  © 2017 City of Davao, Philippines<br>All Rights Reserved<br>
+                  Developed, Maintained and Powered By CITC ^^                     
+                </div>              
+            </div>
+    </footer>
+
+
+
+<script type="text/javascript">
+
+$("#btnSave").click(function(){
+    var xContactNo = $('#contactNumber').val(),
+        xMessage = $('#txtMsg').val(),
+        xDriver = $('#txtDriver').val(),
+        xDate = $('#txtDate').val();
+
+    $.ajax({
+        url: "../../views/inquiry/save.php",
+        cache: false,
+        type: 'POST',
+        data: {contactNo:xContactNo, message:xMessage, driversid:xDriver, currentDate: xDate},
+
+        success: function(data){
+            window.location.reload();
+            alert("Message successfully posted!");
+        },
+        error: function(data){
+            alert("Error in posting the Message.");
+        }
+
+    });
+
+
+});  
+
+</script></body></html>
